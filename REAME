@@ -1,0 +1,48 @@
+In this simulation, you are solving Maxwell’s equations using the FDTD method. These equations describe how electromagnetic fields (electric  \mathbf{E}  and magnetic  \mathbf{B} ) propagate through space and time. 
+This is critical in telecommunications, radar systems, antenna design, and secure communication systems
+
+Here’s what’s happening under the hood:
+
+	•	The FDTD method discretizes space and time into small intervals.
+	•	The simulation computes the electric field at each point on a grid, followed by the magnetic field.
+	•	These calculations are based on finite-difference approximations of the partial differential equations (PDEs) derived from Maxwell’s equations.
+	•	Parallelism is introduced using multithreading, meaning that separate threads are updating the electric and magnetic fields concurrently to improve efficiency. The use of mutexes ensures that there are no race conditions between these threads.
+
+The performance measurement using chrono is vital to determine the efficiency of the simulation for larger grid sizes and more iterations, which would be crucial in real-world applications.
+
+3. Mathematical Importance of the Project
+
+	•	Maxwell’s Equations are the foundation of electromagnetic theory. The ability to numerically solve them is a fundamental skill for any engineer working with wave propagation, electromagnetic interference, or wireless communication.
+	•	The finite-difference method approximates the continuous behavior of fields in discrete steps. This is necessary for real-world simulations, where exact analytical solutions are often impossible.
+Example of a finite difference for the electric field:
+
+\frac{\partial E_x}{\partial t} \approx \frac{E_x^{n+1} - E_x^n}{\Delta t}
+
+This tells us how the electric field changes over time, and similar equations exist for spatial derivatives.
+	•	Parallel Computing: By using multithreading, we can run portions of the computation simultaneously, which is essential for large-scale simulations involving millions of grid points (such as radar wave propagation or secure communication systems).
+	•	The reason for the small time intervals you see in the output (e.g., 8.4333e-05 seconds) is that each time step represents a small “slice” of the total simulation, and updating a large grid can be computationally expensive without parallelism.
+
+
+START
+
+1. Initialize a 2D grid for electric and magnetic fields.
+2. Define parameters such as time step (dt), grid spacing (dx), and number of iterations.
+
+3. FUNCTION update_electric_field(E, B, dt, dx)
+    - Use finite differences to calculate the new electric field values based on the magnetic field.
+
+4. FUNCTION update_magnetic_field(B, E, dt, dx)
+    - Use finite differences to calculate the new magnetic field values based on the electric field.
+
+5. MULTITHREADING:
+    - Launch threads to update both electric and magnetic fields in parallel.
+    - Use mutexes to avoid race conditions during field updates.
+
+6. FUNCTION main()
+    - Initialize electric and magnetic fields.
+    - Launch the multithreaded FDTD solver.
+    - Measure performance using chrono.
+
+END
+
+
