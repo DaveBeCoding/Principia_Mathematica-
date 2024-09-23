@@ -1,0 +1,21 @@
+START
+
+1. Initialize a 2D grid for electric and magnetic fields.
+2. Define parameters such as time step (dt), grid spacing (dx), and number of iterations.
+
+3. FUNCTION update_electric_field(E, B, dt, dx)
+    - Use finite differences to calculate the new electric field values based on the magnetic field.
+
+4. FUNCTION update_magnetic_field(B, E, dt, dx)
+    - Use finite differences to calculate the new magnetic field values based on the electric field.
+
+5. MULTITHREADING:
+    - Launch threads to update both electric and magnetic fields in parallel.
+    - Use mutexes to avoid race conditions during field updates.
+
+6. FUNCTION main()
+    - Initialize electric and magnetic fields.
+    - Launch the multithreaded FDTD solver.
+    - Measure performance using chrono.
+
+END
