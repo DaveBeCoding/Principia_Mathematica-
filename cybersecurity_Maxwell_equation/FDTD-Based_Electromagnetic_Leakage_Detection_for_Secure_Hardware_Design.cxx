@@ -56,6 +56,18 @@
 |    Output: Total EM Leakage Value      |
 +----------------------------------------+
 
+Key: Mathematical Symbols
+
+	•	E : Electric field
+	•	B : Magnetic field
+	•	∇ × E : Curl of the electric field
+	•	∇ × B : Curl of the magnetic field
+	•	∂B/∂t : Time derivative of the magnetic field
+	•	∂E/∂t : Time derivative of the electric field
+	•	μ₀ : Permeability of free space
+	•	ε₀ : Permittivity of free space
+	•	J : Current density (source of electric and magnetic fields)
+
    Explanation of the Flowchart
 
 	•	Initialize Simulation Grid: This sets up the 3D grid (space) where the electric and magnetic fields will be simulated. Each point in the grid represents a part of the physical system (e.g., a chip, circuit, etc.).
