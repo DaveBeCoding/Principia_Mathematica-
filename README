@@ -1,3 +1,6 @@
+update_electric_field();  // Solve ∇ x E = -∂B/∂t
+update_magnetic_field();  // Solve ∇ x B = μ₀ J + μ₀ε₀ ∂E/∂t
+
 Example Problem 1: (Use case-1 FDTD)
 
 Problem:
