@@ -1,5 +1,4 @@
 /*
-
              Portfolio Optimization in Finance
 ---------------------------------------------------
 The goal is to allocate investments across assets
@@ -12,7 +11,6 @@ Key Concepts:
 
 We will break down each of these and how to calculate
 them step by step.
-
 
 Covariance Matrix represents risk (variance & covariance).
 
@@ -31,8 +29,6 @@ Explanation:
   - V[2][2] = 0.15 -> Variance of Asset 3
   - V[0][1] = 0.05 -> Covariance between Asset 1 & 2
 */
-
-
 
 #include <iostream>
 #include <Eigen/Dense>
@@ -58,16 +54,24 @@ int main() {
     // Calculate portfolio variance (risk)
     double portfolio_variance = w.transpose() * V * w;  // w^T * V * w
 
+    // Output the results
     std::cout << "Expected Portfolio Return: " << portfolio_return << std::endl;
     std::cout << "Portfolio Variance (Risk): " << portfolio_variance << std::endl;
+
+    // Step-by-step explanation
+    std::cout << " " << std::endl;
+    std::cout << "1. Initialize `V`, `R`, and `w` using `Eigen`." << std::endl; 
+    std::cout << "2. Calculate Expected Return: R^T * w" << std::endl;
+    std::cout << "3. Calculate Portfolio Variance: w^T * V * w" << std::endl;
+    std::cout << "4. Output the results:" << std::endl;
+    std::cout << "- Expected Portfolio Return" << std::endl;
+    std::cout << "- Portfolio Variance (Risk)" << std::endl;
 
     return 0;
 }
 
 /*
-
         [  Var(X)    Cov(X, Y)  Cov(X, Z)  ]
     V = [ Cov(Y, X)  Var(Y)     Cov(Y, Z)  ]
         [ Cov(Z, X)  Cov(Z, Y)  Var(Z)     ]
-
 */
