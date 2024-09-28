@@ -63,3 +63,11 @@ int main() {
 
     return 0;
 }
+
+/*
+
+        [  Var(X)    Cov(X, Y)  Cov(X, Z)  ]
+    V = [ Cov(Y, X)  Var(Y)     Cov(Y, Z)  ]
+        [ Cov(Z, X)  Cov(Z, Y)  Var(Z)     ]
+
+*/
