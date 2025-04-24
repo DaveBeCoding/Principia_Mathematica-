@@ -1,0 +1,36 @@
+✅ **Environment Resolution Summary – C Memory Modeling Suite**
+
+During compilation on host OS (⎯⎯ host CPU), a conflict was identified involving a non-standard `assert.h` header located at `/usr/local/include/assert.h`. This header erroneously references a C++ header (`<sstream>`) in a C context, which violates the expected conventions of C compilation and results in a fatal error.
+
+This issue did not originate from ⎯⎯’s tooling or system headers, but rather from third-party tools (e.g., ⎯⎯, ⎯⎯, or custom host packages) that unintentionally introduced a conflicting header file into the include path.
+
+---
+
+🧠 **Resolution Strategy**
+
+Two solutions were identified and implemented to ensure platform stability and maintain code portability:
+
+**1. Use System Headers Exclusively (Preferred for Professional Environments)**
+
+The project’s `Makefile` was updated to explicitly bypass `/usr/local/include` and instead target the system’s trusted headers:
+
+```make
+CFLAGS = -Wall -Wextra -pedantic -std=c11 -O2 -I./src -nostdinc -isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
+```
+
+- ✅ Guarantees deterministic builds using ⎯⎯’s vetted headers  
+- ✅ Shields the project from 3rd-party header injection
+
+**2. Temporarily Disable Conflicting Header (Quick Local Debugging)**
+
+A local developer workaround involved renaming the rogue header during build time:
+
+```bash
+mv /usr/local/include/assert.h /usr/local/include/assert.h.bak
+./run.sh
+mv /usr/local/include/assert.h.bak /usr/local/include/assert.h
+```
+
+- ⚠️ This is a safe local fix, not recommended in shared or production environments
+
+---
