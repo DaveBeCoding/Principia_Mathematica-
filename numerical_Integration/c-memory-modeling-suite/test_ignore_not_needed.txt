@@ -1,0 +1,25 @@
+# Ignore compiled object files
+*.o
+*.obj
+
+# Ignore compiled binary executables
+*.out
+*.exe
+a.out
+
+# Ignore debug files
+*.dSYM/
+
+# Ignore core dumps (common on Linux/macOS)
+core*
+
+# Ignore makefiles and other build artifacts
+Makefile*
+*.swp
+
+# Ignore temporary files created by editors
+*~
+
+# Ignore any files or directories starting with 'note'
+note*
+
